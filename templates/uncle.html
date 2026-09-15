@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roofing & Fencing Services</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+            url('https://images.unsplash.com/photo-1504307651254-35680f356dfd');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+        }
+
+        .service-card {
+            border: none;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: #0d6efd;
+        }
+
+        .cta-section {
+            background: #212529;
+            color: white;
+            padding: 60px 20px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+
+      <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+        <img src="{{ url_for('static', filename='images/testrod.png') }}" style="height:44px; margin-right:8px;">
+        <img src="{{ url_for('static', filename='images/testuncle.png') }}" style="height:44px; margin-right:12px;">
+        <span class="fs-6">A.G Concrete / Golden Plasters LLC</span>
+    </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/gallery">Concrete Work</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/uncle">Exterior Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Exterior Construction Services</h1>
+      <p class="lead mt-3">
+          Roofing, fencing, decks, framing, and stucco services built for durability and quality.
+      </p>
+
+        <a href="/contact" class="btn btn-primary btn-lg mt-3">
+            Get a Free Estimate
+        </a>
+    </div>
+</section>
+
+<!-- Services -->
+<div class="container py-5">
+
+    <div class="row g-4">
+
+        <!-- Roofing -->
+        <div class="col-lg-6">
+            <div class="card service-card shadow-sm h-100">
+                <div class="card-body p-4">
+
+                    <div class="text-center mb-3">
+                        <i class="bi bi-house-fill icon"></i>
+                    </div>
+
+                    <h3 class="text-center mb-3">Structural & Roofing Services</h3>
+
+                    <p>
+                      We provide reliable exterior construction work including roofing and structural builds designed for strength and durability.
+                    </p>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">✔ Roof Installation</li>
+                        <li class="list-group-item">✔ Roof Repairs</li>
+                        <li class="list-group-item">✔ Shingle Replacement</li>
+                        <li class="list-group-item">✔ Roof Inspections</li>
+                        <li class="list-group-item">✔ Framing Work</li>
+                        <li class="list-group-item">✔ Structural Repairs</li>
+                        <li class="list-group-item">✔ General Exterior Builds</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Fencing -->
+        <div class="col-lg-6">
+            <div class="card service-card shadow-sm h-100">
+                <div class="card-body p-4">
+
+                    <div class="text-center mb-3">
+                        <i class="bi bi-shield-fill-check icon"></i>
+                    </div>
+
+                    <h3 class="text-center mb-3">Exterior Finishing Services</h3>
+
+                    <p>
+                      Enhance your property with high-quality exterior finishes including fencing, decks, and stucco work.
+                    </p>
+
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">✔ Fencing (Wood & Privacy)</li>
+                      <li class="list-group-item">✔ Custom Deck Construction</li>
+                      <li class="list-group-item">✔ Stucco Application & Repair</li>
+                      <li class="list-group-item">✔ Exterior Upgrades</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section text-center mt-5">
+        <h2 class="fw-bold">Golden Plasters LLC</h2>
+        <p class="lead">
+          A sister company of A.G Concrete Flatworks.
+        </p>
+
+        <a href="/contact" class="btn btn-light btn-lg">
+            Contact Us
+        </a>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

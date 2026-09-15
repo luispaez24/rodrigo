@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.G Concrete</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+
+        :root {
+            --charcoal: #1c1c1c;
+            --concrete: rgb(59,59,59);
+            --concrete-light: #d8d6d0;
+            --off-white: #f4f3ef;
+            --safety-orange: #ff6a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--off-white);
+            color: var(--charcoal);
+        }
+
+        h1, h2, h3, h4, .navbar-brand span {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-glass {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            background: var(--concrete);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        }
+
+        .navbar-glass .navbar-brand span {
+            color: #fff;
+        }
+
+        .navbar-glass .nav-link {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            padding: 8px 14px !important;
+            color: #fff !important;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-glass .nav-link:hover {
+            color: var(--safety-orange) !important;
+        }
+
+
+        /* ===== FULL-BLEED VIDEO HERO ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            background: var(--charcoal);
+        }
+
+        /* Adjust this value to zoom the video in/out. 1 = fills the screen edge to edge. Lower = more zoomed out. */
+        :root { --hero-video-scale: 1; }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%) scale(var(--hero-video-scale));
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                rgba(0,0,0,0.55) 0%,
+                rgba(0,0,0,0.15) 35%,
+                rgba(0,0,0,0.25) 65%,
+                rgba(0,0,0,0.75) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding-bottom: 64px;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            color: var(--safety-orange);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+            border-left: 3px solid var(--safety-orange);
+            padding-left: 10px;
+        }
+
+        .hero-title {
+            color: #fff;
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            line-height: 1.03;
+            font-weight: 700;
+            margin-bottom: 18px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+        }
+
+        .hero-title .accent { color: var(--safety-orange); }
+
+        .hero-services {
+            color: var(--concrete-light);
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.06em;
+            font-size: 1rem;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .hero-services span:not(:last-child)::after {
+            content: "•";
+            color: var(--safety-orange);
+            margin: 0 12px;
+        }
+
+        .btn-hero-primary {
+            background: var(--safety-orange);
+            border: none;
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            padding: 14px 30px;
+            border-radius: 4px;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        .btn-hero-primary:hover {
+            background: #e85e12;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .btn-hero-secondary {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.7);
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .btn-hero-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .scroll-cue .bar {
+            width: 1px;
+            height: 26px;
+            background: rgba(255,255,255,0.5);
+            animation: scrollPulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== WORK SECTION ===== */
+        section { padding-top: 70px; padding-bottom: 70px; }
+
+        .section-eyebrow {
+            color: var(--safety-orange);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            text-align: center;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .card-title, h4 { text-shadow: none; }
+
+        .why-choose {
+            background: var(--charcoal);
+            color: var(--off-white);
+        }
+
+        .why-choose h2 { color: #fff; }
+        .why-choose .lead { color: var(--concrete-light); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-cue .bar { animation: none; }
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: #141414;
+            color: var(--concrete-light);
+            padding-top: 56px;
+            padding-bottom: 30px;
+        }
+
+        .site-footer h5 {
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+
+        .footer-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            color: var(--concrete-light);
+        }
+
+        .footer-info i {
+            color: var(--safety-orange);
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        .footer-info a {
+            color: var(--concrete-light);
+            text-decoration: none;
+        }
+
+        .footer-info a:hover {
+            color: var(--safety-orange);
+        }
+
+        .footer-hours div {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-hours span:first-child { color: #fff; }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .footer-socials a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .footer-socials a:hover {
+            background: var(--safety-orange);
+            border-color: var(--safety-orange);
+            transform: translateY(-2px);
+        }
+
+        .footer-cta {
+            text-align: center;
+        }
+
+        .footer-cta p {
+            color: var(--concrete-light);
+            margin-bottom: 16px;
+        }
+
+        .btn-footer-quote {
+            display: inline-block;
+            background: var(--safety-orange);
+            color: #fff;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        .btn-footer-quote:hover {
+            background: #e85e12;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!--  This is gonna be the same for all pages Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+      
+      <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+        <img src="{{ url_for('static', filename='images/testrod.png') }}" style="height:44px; margin-right:8px;">
+        <img src="{{ url_for('static', filename='images/testuncle.png') }}" style="height:44px; margin-right:12px;">
+        <span class="fs-6">A.G Concrete / Golden Plasters LLC</span>
+    </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/gallery">Concrete Work</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/uncle">Exterior Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutus">About Us</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+            
+
+
+<!-- FULL-BLEED VIDEO HERO -->
+<section class="hero">
+
+    <video class="hero-video" autoplay muted loop playsinline poster="{{ url_for('static', filename='images/Background2.png') }}">
+        <source src="{{ url_for('static', filename='videos/rodworkingcrop.mp4') }}">
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="hero-eyebrow">Family-Owned &middot; Colorado</span>
+                    <h1 class="hero-title">Built on <span class="accent">concrete.</span><br>Backed by craft.</h1>
+                    <p class="hero-services">
+                        <span>Driveways</span><span>Patios</span><span>Foundations</span><span>Fencing</span><span>Stucco</span><span>Decks</span><span>Framing</span>
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="/book" class="btn-hero-primary">Book Appointment</a>
+                        <a href="/contact" class="btn-hero-secondary">Get a Free Estimate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-cue">
+        <span>Scroll</span>
+        <div class="bar"></div>
+    </div>
+
+</section>
+
+
+<!-- WORK SECTION -->
+<section class="container">
+
+    <span class="section-eyebrow">Our Work</span>
+    <h2 class="text-center fw-bold mb-5">What We Build</h2>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/driveways.png') }}" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <h4>Driveways</h4>
+            <p>High-quality concrete driveways built to last.</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/sidewalk.png') }}" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <h4>SideWalks</h4>
+            <p>high-quality concrete sidewalks built to last.</p>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/custom.png') }}" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <h4>Custom Concrete</h4>
+            <p>Decorative and structural concrete work.</p>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- WHY CHOOSE US -->
+<section class="why-choose text-center">
+    <div class="container">
+        <span class="section-eyebrow">Why A.G Concrete</span>
+        <h2 class="fw-bold">Family-Owned, Built Right</h2>
+        <p class="lead">Reliable crews, honest quotes, and craftsmanship that holds up to Colorado weather.</p>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row gy-4">
+
+            <div class="col-md-4">
+                <h5>Get In Touch</h5>
+                <div class="footer-info">
+                    <i class="bi bi-telephone-fill"></i>
+                    <a href="tel:+15551234567">(720)609-6656</a>
+                </div>
+                <div class="footer-info">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Aurora, CO</span>
+                </div>
+                <h5 class="mt-4">Follow Us</h5>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-4 footer-hours">
+                <h5>Hours of Work</h5>
+                <div><span>Monday - Friday</span><span>7:00 AM - 6:00 PM</span></div>
+                <div><span>Saturday</span><span>8:00 AM - 4:00 PM</span></div>
+                <div><span>Sunday</span><span>Closed</span></div>
+            </div>
+
+            <div class="col-md-4 footer-cta d-flex flex-column justify-content-center">
+                <h5>Ready to Start?</h5>
+                <p>Get a free, no-obligation quote for your project.</p>
+                <a href="/contact" class="btn-footer-quote">Get Your Free Quote</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 A.G Concrete / Golden Plasters LLC. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

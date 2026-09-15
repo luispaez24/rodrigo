@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | A.G Concrete</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+
+    :root {
+      --charcoal: #1c1c1c;
+      --concrete: rgb(59,59,59);
+      --concrete-light: #d8d6d0;
+      --off-white: #f4f3ef;
+      --safety-orange: #ff6a1a;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--charcoal);
+    }
+
+    h1, h2, h3, h4, .navbar-brand span {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar-glass {
+      background: var(--concrete);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+
+    .navbar-glass .navbar-brand span { color: #fff; }
+
+    .navbar-glass .nav-link {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      padding: 8px 14px !important;
+      color: #fff !important;
+      transition: color 0.2s ease;
+    }
+
+    .navbar-glass .nav-link:hover {
+      color: var(--safety-orange) !important;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--charcoal);
+      color: #fff;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .hero .section-eyebrow {
+      color: var(--safety-orange);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--concrete-light);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    /* ===== CONTENT ===== */
+    .content {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .content p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #4a4a46;
+      margin-bottom: 20px;
+    }
+
+    /* ===== CAROUSEL SECTION ===== */
+    .workers-section {
+      background: var(--concrete-light);
+      padding: 70px 0;
+    }
+
+    .section-eyebrow-dark {
+      color: var(--safety-orange);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      font-size: 0.85rem;
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .carousel-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .carousel-img {
+      height: 420px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      padding: 18px;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: #141414;
+      color: var(--concrete-light);
+      padding-top: 56px;
+      padding-bottom: 30px;
+    }
+
+    .site-footer h5 {
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+
+    .footer-info {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+      color: var(--concrete-light);
+    }
+
+    .footer-info i {
+      color: var(--safety-orange);
+      font-size: 1.1rem;
+      margin-top: 2px;
+    }
+
+    .footer-info a {
+      color: var(--concrete-light);
+      text-decoration: none;
+    }
+
+    .footer-info a:hover {
+      color: var(--safety-orange);
+    }
+
+    .footer-hours div {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-hours span:first-child { color: #fff; }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .footer-socials a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .footer-socials a:hover {
+      background: var(--safety-orange);
+      border-color: var(--safety-orange);
+      transform: translateY(-2px);
+    }
+
+    .footer-cta {
+      text-align: center;
+    }
+
+    .footer-cta p {
+      color: var(--concrete-light);
+      margin-bottom: 16px;
+    }
+
+    .btn-footer-quote {
+      display: inline-block;
+      background: var(--safety-orange);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-footer-quote:hover {
+      background: #e85e12;
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 40px;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-glass">
+  <div class="container">
+
+    <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+      <img src="{{ url_for('static', filename='images/testrod.png') }}" style="height:40px; margin-right:8px;">
+      <img src="{{ url_for('static', filename='images/testuncle.png') }}" style="height:40px; margin-right:10px;">
+      <span class="fs-6">A.G Concrete / Golden Plasters LLC</span>
+    </a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/book">Book Appointment</a></li>
+        <li class="nav-item"><a class="nav-link" href="/gallery">Our Work</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Free Estimate</a></li>
+        <li class="nav-item"><a class="nav-link" href="/uncle">Exterior Services</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/aboutus">About Us</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="section-eyebrow">Who We Are</span>
+  <h1>About Us</h1>
+  <p>Quality concrete work you can trust.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+  <p>Our mission is to provide reliable service, quality craftsmanship, and customer satisfaction on every project. We work closely with our clients to ensure their vision becomes a reality while maintaining the highest standards of workmanship.</p>
+  <p>In addition to our concrete services, our sister company specializes in professional roofing and fencing solutions, allowing us to help improve and protect your property from start to finish.</p>
+  <p>Thank you for considering A.G Concrete. We look forward to helping bring your next project to life.</p>
+</div>
+
+<!-- CAROUSEL -->
+<div class="workers-section">
+  <div class="container">
+
+    <span class="section-eyebrow-dark">Behind the Work</span>
+    <h2 class="text-center mb-4">See the Workers</h2>
+
+    <div id="workersCarousel"
+         class="carousel slide carousel-fade"
+         data-bs-ride="carousel"
+         data-bs-interval="3500">
+
+      <div class="carousel-inner shadow">
+
+        <div class="carousel-item active">
+          <img src="{{ url_for('static', filename='images/working1.jpg') }}" class="d-block carousel-img" alt="Worker 1">
+        </div>
+
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/working2.jpg') }}" class="d-block carousel-img" alt="Worker 2">
+        </div>
+
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/working3.jpg') }}" class="d-block carousel-img" alt="Worker 3">
+        </div>
+
+        <div class="carousel-item">
+          <img src="{{ url_for('static', filename='images/working4.jpg') }}" class="d-block carousel-img" alt="Worker 4">
+        </div>
+
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#workersCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#workersCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row gy-4">
+
+      <div class="col-md-4">
+        <h5>Get In Touch</h5>
+        <div class="footer-info">
+          <i class="bi bi-telephone-fill"></i>
+          <a href="tel:+17206096656">(720) 609-6656</a>
+        </div>
+        <div class="footer-info">
+          <i class="bi bi-geo-alt-fill"></i>
+          <span>Aurora, CO</span>
+        </div>
+        <h5 class="mt-4">Follow Us</h5>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-4 footer-hours">
+        <h5>Hours of Work</h5>
+        <div><span>Monday - Friday</span><span>7:00 AM - 6:00 PM</span></div>
+        <div><span>Saturday</span><span>8:00 AM - 4:00 PM</span></div>
+        <div><span>Sunday</span><span>Closed</span></div>
+      </div>
+
+      <div class="col-md-4 footer-cta d-flex flex-column justify-content-center">
+        <h5>Ready to Start?</h5>
+        <p>Get a free, no-obligation quote for your project.</p>
+        <a href="/contact" class="btn-footer-quote">Get Your Free Quote</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 A.G Concrete / Golden Plasters LLC. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

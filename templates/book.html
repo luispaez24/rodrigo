@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | A.G Concrete</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+
+        :root {
+            --charcoal: #1c1c1c;
+            --concrete: rgb(59,59,59);
+            --concrete-light: #d8d6d0;
+            --off-white: #f4f3ef;
+            --safety-orange: #ff6a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--off-white);
+            color: var(--charcoal);
+            padding-bottom: 80px;
+        }
+
+        h1, h2, h3, h4, .navbar-brand span {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-glass {
+            background: var(--concrete);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        }
+
+        .navbar-glass .navbar-brand span { color: #fff; }
+
+        .navbar-glass .nav-link {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            padding: 8px 14px !important;
+            color: #fff !important;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-glass .nav-link:hover {
+            color: var(--safety-orange) !important;
+        }
+
+        /* ===== BOOKING CARD ===== */
+        .booking-wrap {
+            max-width: 640px;
+            margin: 50px auto 0;
+        }
+
+        .section-eyebrow {
+            color: var(--safety-orange);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            text-align: center;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .booking-title {
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .booking-subtitle {
+            text-align: center;
+            color: #6c6c68;
+            margin-bottom: 36px;
+            font-family: 'Inter', sans-serif;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .booking-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--safety-orange);
+        }
+
+        .form-label {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #ddd8d0;
+            border-radius: 6px;
+            padding: 12px 14px;
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--safety-orange);
+            box-shadow: 0 0 0 3px rgba(255,106,26,0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--safety-orange);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+
+        .btn-submit:hover {
+            background: #e85e12;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .booking-note {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 22px;
+            color: #6c6c68;
+            font-size: 0.9rem;
+        }
+
+        .booking-note i { color: var(--safety-orange); }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+
+        <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+            <img src="{{ url_for('static', filename='images/testrod.png') }}" style="height:40px; margin-right:8px;">
+            <img src="{{ url_for('static', filename='images/testuncle.png') }}" style="height:40px; margin-right:10px;">
+            <span class="fs-6">A.G Concrete / Golden Plasters LLC</span>
+        </a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/book">Book Appointment</a></li>
+                <li class="nav-item"><a class="nav-link" href="/gallery">Our Work</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact">Free Estimate</a></li>
+                <li class="nav-item"><a class="nav-link" href="/uncle">Exterior Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/aboutus">About Us</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- BOOKING FORM -->
+<div class="container">
+    <div class="booking-wrap">
+
+        <span class="section-eyebrow">Schedule Your Project</span>
+        <h1 class="booking-title">Book a Concrete Service</h1>
+        <p class="booking-subtitle">Fill out the form below and our team will confirm your appointment.</p>
+
+        <div class="booking-card">
+            <form method="POST">
+
+                <label class="form-label">Full Name</label>
+                <input type="text" name="name" placeholder="John Doe" class="form-control" required>
+
+                <label class="form-label">Email</label>
+                <input type="email" name="email" placeholder="you@example.com" class="form-control" required>
+
+                <label class="form-label">Phone Number</label>
+                <input type="text" name="phone" placeholder="(555) 123-4567" class="form-control" required>
+
+                <label class="form-label">Service</label>
+                <select name="service" class="form-select">
+                    <option>Driveway</option>
+                    <option>Patio</option>
+                    <option>Foundation</option>
+                    <option>Sidewalk</option>
+                </select>
+
+                <label class="form-label">Preferred Date</label>
+                <input type="date" name="date" class="form-control" required>
+
+                <label class="form-label">Project Details</label>
+                <textarea name="message" placeholder="Tell us a bit about your project..." class="form-control" rows="4"></textarea>
+
+                <button type="submit" class="btn-submit">Submit Appointment</button>
+
+            </form>
+
+            <div class="booking-note">
+                <i class="bi bi-clock-fill"></i>
+                <span>We'll get back to you within 1 business day.</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

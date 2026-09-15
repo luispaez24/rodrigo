@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-title {
+            margin: 60px 0 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            border-radius: 0 0 12px 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+  <div class="container">
+    
+    <a class="navbar-brand d-flex align-items-center fw-bold" href="/">
+      <img src="{{ url_for('static', filename='images/testrod.png') }}" style="height:44px; margin-right:8px;">
+      <img src="{{ url_for('static', filename='images/testuncle.png') }}" style="height:44px; margin-right:12px;">
+      <span class="fs-6">A.G Concrete / Golden Plasters LLC</span>
+  </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+
+              <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="/gallery">Concrete Work</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link active" href="/uncle">Exterior Services</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" href="/contact">Contact</a>
+              </li>
+              
+              <li class="nav-item">
+                  <a class="nav-link" href="/aboutus">About Us</a>
+              </li>
+
+
+          </ul>
+      </div>
+  </div>
+</nav>
+</nav>
+<!-- HERO -->
+<div class="bg-dark text-white text-center py-5">
+    <h1 class="fw-bold">Our Work</h1>
+    <p class="lead">Real projects. Real results. Built to last.</p>
+</div>
+
+<!-- INTRO -->
+<div class="container text-center my-5">
+    <p class="lead text-muted" style="max-width: 800px; margin: auto;">
+        Explore our completed concrete and fencing projects. From driveways to patios and custom fencing,
+        we deliver quality craftsmanship and long-lasting results.
+    </p>
+</div>
+
+<div class="container py-5">
+
+    <!-- Concrete Work -->
+    <h2 class="section-title">Concrete Work</h2>
+
+    {% set concrete_projects = [
+      {'img':'example_picture1.png', 'title':'Driveway', 'desc':'Upgrade your home with a durable, professionally installed driveway built to last. Get your free estimate today.'},
+
+      {'img':'example_picture2.png', 'title':'Patio', 'desc':'Transform your outdoor space with a custom patio perfect for relaxing and entertaining. Contact us for a free estimate.'},
+  
+      {'img':'example_picture3.png', 'title':'Concrete Project', 'desc':'Dependable, high-quality concrete work you can trust. Let us bring your project to life—get a free estimate today.'},
+  
+      {'img':'example_picture4.png', 'title':'Prep Work', 'desc':'Proper preparation is key to long-lasting results. We handle every detail—start your project with a free estimate.'},
+  
+      {'img':'example_picture5.png', 'title':'Foundation', 'desc':'Build on a strong foundation designed for durability and stability. Reach out now for your free estimate.'},
+  
+      {'img':'example_picture6.png', 'title':'Precision Work', 'desc':'Clean, precise finishes that stand out. Experience professional craftsmanship—get your free estimate today.'},
+  
+      {'img':'example_picture7.png', 'title':'Custom Steps', 'desc':'Enhance your property with custom-built steps designed for safety and style. Request your free estimate today.'},
+  
+      {'img':'example_picture8.png', 'title':'Custom Concrete', 'desc':'Have a unique idea? We create custom concrete solutions tailored to your vision. Get started with a free estimate.'},
+  
+      {'img':'example_picture9.png', 'title':'Craftsmanship', 'desc':'Quality craftsmanship that adds value and durability to your property. Contact us today for a free estimate.'},
+  
+      {'img':'example_picture10.png', 'title':'High Quality', 'desc':'Top-quality concrete work built to impress and last for years. Don’t wait—get your free estimate today.'}
+  ] %}
+
+    <div class="row g-4">
+        {% for project in concrete_projects %}
+        <div class="col-md-4 col-sm-6">
+            <div class="position-relative">
+
+                <img src="{{ url_for('static', filename='images/' ~ project.img) }}"
+                     class="gallery-img shadow"
+                     alt="{{ project.title }}"
+                     onerror="this.closest('.col-md-4').style.display='none';"
+                     data-bs-toggle="modal"
+                     data-bs-target="#modal{{ loop.index }}">
+
+                <div class="img-overlay">
+                    {{ project.title }}
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Fencing Work -->
+    <h2 class="section-title">Fencing Work</h2>
+
+    {% set fencing_projects = [
+        {'img':'fencing1.png', 'title':'Fence Build', 'desc':'Strong and beautiful fence.'},
+        {'img':'fencing2.png', 'title':'Privacy Fence', 'desc':'Privacy and security fence.'},
+        {'img':'fencing3.png', 'title':'Custom Fence', 'desc':'Custom fencing design.'},
+        {'img':'fencing4.png', 'title':'Outdoor Fence', 'desc':'Durable outdoor fencing.'},
+        {'img':'fencing5.png', 'title':'Craftsmanship', 'desc':'Reliable craftsmanship.'},
+        {'img':'fencing6.png', 'title':'Installation', 'desc':'Professional installation.'},
+        {'img':'fencing7.png', 'title':'Strong Build', 'desc':'Aesthetic and strong fence.'},
+        {'img':'fencing8.png', 'title':'High Quality', 'desc':'High-quality fencing.'}
+    ] %}
+
+    <div class="row g-4">
+        {% for project in fencing_projects %}
+        <div class="col-md-4 col-sm-6">
+            <div class="position-relative">
+
+                <img src="{{ url_for('static', filename='images/' ~ project.img) }}"
+                     class="gallery-img shadow"
+                     alt="{{ project.title }}"
+                     onerror="this.closest('.col-md-4').style.display='none';"
+                     data-bs-toggle="modal"
+                     data-bs-target="#modal{{ loop.index + 10 }}">
+
+                <div class="img-overlay">
+                    {{ project.title }}
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-5">
+        <a href="{{ url_for('contact') }}" class="btn btn-dark btn-lg">
+            Get a Free Estimate
+        </a>
+    </div>
+
+</div>
+
+<!-- MODALS (Concrete) -->
+{% for project in concrete_projects %}
+<div class="modal fade" id="modal{{ loop.index }}" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>{{ project.title }}</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="{{ url_for('static', filename='images/' ~ project.img) }}" class="img-fluid rounded mb-3">
+        <p>{{ project.desc }}</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-dark">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- MODALS (Fencing) -->
+{% for project in fencing_projects %}
+<div class="modal fade" id="modal{{ loop.index + 10 }}" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>{{ project.title }}</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="{{ url_for('static', filename='images/' ~ project.img) }}" class="img-fluid rounded mb-3">
+        <p>{{ project.desc }}</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-dark">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
